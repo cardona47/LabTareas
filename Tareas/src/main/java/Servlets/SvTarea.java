@@ -71,6 +71,10 @@ public class SvTarea extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        
+        
+        request.getAttribute(string);
+        request.getAttribute(string);
         processRequest(request, response);
     }
 
