@@ -73,8 +73,8 @@ public class SvTarea extends HttpServlet {
             throws ServletException, IOException {
         
         
-        request.getAttribute(string);
-        request.getAttribute(string);
+        request.getAttribute("");
+        request.getAttribute("");
         processRequest(request, response);
     }
 
