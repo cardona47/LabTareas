@@ -7,7 +7,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 
-<%@include file = "Templates/Header.jsp" %>
+<%@include file = "templates/header.jsp" %>
  <section class="vh-100" style="background-color: #9A616D;">
   <div class="container py-5 h-100">
     <div class="row d-flex justify-content-center align-items-center h-100">
@@ -105,6 +105,6 @@
         });
     });
 </script>
-<%@include file = "Templates/Footer.jsp" %>
+<%@include file = "templates/footer.jsp" %>
 
 
