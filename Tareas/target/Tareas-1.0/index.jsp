@@ -6,32 +6,8 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html>
-<head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>JSP Page</title>
-    
-    <!-- Enlaces a las bibliotecas de Bootstrap desde los servidores de Bootstrap -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-    
-    
-    <style>
-        .bg-image-vertical {
-            position: relative;
-            overflow: hidden;
-            background-repeat: no-repeat;
-            background-position: right center;
-            background-size: auto 100%;
-        }
 
-        @media (min-width: 1025px) {
-            .h-custom-2 {
-                height: 100%;
-            }
-        }
-    </style>
-</head>
-<body>
+<%@include file = "templates/header.jsp" %>
  <section class="vh-100" style="background-color: #9A616D;">
   <div class="container py-5 h-100">
     <div class="row d-flex justify-content-center align-items-center h-100">
@@ -83,8 +59,53 @@
     </div>
   </div>
 </section>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>
-</body>
-</html>
+    <!-- ventana Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Registrarse</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form action="SvUsuario" method="POST"
+                <div id="usuario-details">
+                    <div class="form-outline mb-4">
+                        <input type="text" id="form2Example27" class="form-control form-control-lg"name="Cedula" />
+                        <label class="form-label" for="form2Example27">Cédula</label>
+                    </div>
+
+                    <div class="form-outline mb-4">
+                        <input type="text" id="form2Example27" class="form-control form-control-lg"name="Nombre de usuario"/>
+                        <label class="form-label" for="form2Example27">Nombre de usuario</label>
+                    </div>
+
+                    <div class="form-outline mb-4">
+                        <input type="password" id="form2Example27" class="form-control form-control-lg"name="Contraseña"/>
+                        <label class="form-label" for="form2Example27">Contraseña</label>
+                    </div>
+
+                    <button type="submit" class="btn btn-dark btn-lg btn-block" id="btnRegistrar">Registrarse</button>
+                    </form>
+
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function () {
+        // Agrega un controlador de clic al enlace "Regístrate aquí"
+        $("a[href='#exampleModal']").on('click', function () {
+            // Muestra el modal cuando se hace clic en el enlace
+            $('#exampleModal').modal('show');
+        });
+    });
+</script>
+<%@include file = "templates/footer.jsp" %>
+
 
