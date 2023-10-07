@@ -21,12 +21,12 @@ public class RegistrarUsuarios {
     public static ArrayList<Usuario> darUsuarios = new ArrayList<>();
 
     
-    public static void guardarUsuario(ArrayList<Usuario> usuarios, ServletContext context) throws IOException {
+    public static void guardarUsuario(ArrayList<Usuario> usuariosnuevos, ServletContext context) throws IOException {
         String relativePath = "/data/usuarios.txt";
         String absPath = context.getRealPath(relativePath);
 
         try (BufferedWriter escritor = new BufferedWriter(new FileWriter(absPath))) {
-            for (Usuario usuario : usuarios) {
+            for (Usuario usuario : usuariosnuevos) {
                 String linea = usuario.getCedula() + ","
                         + usuario.getNombreUsuario() + ","
                         + usuario.getContrasenia();

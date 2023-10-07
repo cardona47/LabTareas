@@ -9,21 +9,28 @@ import com.umariana.mundo.Usuario;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
-import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import static jdk.jpackage.internal.Arguments.CLIOptions.context;
 
 /**
  *
- * @author Josue
+ * @author Acer
  */
+@WebServlet(name = "SvLogin", urlPatterns = {"/SvLogin"})
+public class SvLogin extends HttpServlet {
 
-@WebServlet(name = "SvUsuario", urlPatterns = {"/SvUsuario"})
-public class SvUsuario extends HttpServlet {
+    /**
+     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
+     * methods.
+     *
+     * @param request servlet request
+     * @param response servlet response
+     * @throws ServletException if a servlet-specific error occurs
+     * @throws IOException if an I/O error occurs
+     */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
@@ -42,23 +49,29 @@ public class SvUsuario extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
-        ArrayList<Usuario> usuariosnuevos = new ArrayList<>();
-        
-        String cedulan = request.getParameter("Cedulan");
-        String nombre = request.getParameter("NombreUsuarion");
-        String contran = request.getParameter("Contrasenian");
-        
-        Usuario usuarionuevo = new Usuario(cedulan,nombre, contran);
-        usuariosnuevos.add(usuarionuevo);
-        
-        RegistrarUsuarios.guardarUsuario(usuariosnuevos, getServletContext());
+        String cedula = request.getParameter("Cedula");
+        String contrasenia = request.getParameter("contrasenia");
         
         ArrayList<Usuario> UsuariosR = RegistrarUsuarios.cargarUsuario(getServletContext());
-        UsuariosR.add(usuarionuevo);
         
-        RegistrarUsuarios.guardarUsuario(usuariosnuevos, getServletContext());
-        request.getRequestDispatcher("index.jsp").forward(request, response);
-         
+        boolean autenticado = false;
+    //validacion de los datos que ingresa el usuario con los datos del ArrayList
+    for (Usuario usuario : UsuariosR) {
+        if (usuario.getCedula().equals(cedula) && usuario.getContrasenia().equals(contrasenia)) {
+            autenticado = true;
+            break; // Si el usuario es validado sera redirigido
+        }
+    }
+    
+    if (autenticado) {
+        // Autenticación exitosa, redirige al usuario a Tareas.jsp
+        response.sendRedirect("Tareas.jsp");
+    } else {
+        // Autenticación fallida, redirige al usuario a index.jsp
+        response.sendRedirect("index.jsp");
+    }
+
+        processRequest(request, response);
     }
 
     /**
