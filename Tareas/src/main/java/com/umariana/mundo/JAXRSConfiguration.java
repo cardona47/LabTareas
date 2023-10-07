@@ -1,4 +1,4 @@
-package com.umariana.tareas;
+package com.umariana.mundo;
 
 import javax.ws.rs.ApplicationPath;
 import javax.ws.rs.core.Application;

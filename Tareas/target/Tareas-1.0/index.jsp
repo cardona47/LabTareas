@@ -32,12 +32,17 @@
 
                   <div class="form-outline mb-4">
                     <input type="email" id="form2Example17" class="form-control form-control-lg" />
-                    <label class="form-label" for="form2Example17">Email address</label>
+                    <label class="form-label" for="form2Example17">cedula</label>
                   </div>
 
                   <div class="form-outline mb-4">
                     <input type="password" id="form2Example27" class="form-control form-control-lg" />
-                    <label class="form-label" for="form2Example27">Password</label>
+                    <label class="form-label" for="form2Example27">Nombre de usuario</label>
+                  </div>
+                  
+                  <div class="form-outline mb-4">
+                    <input type="password" id="form2Example27" class="form-control form-control-lg" />
+                    <label class="form-label" for="form2Example27">Contraseña</label>
                   </div>
 
                   <div class="pt-1 mb-4">
@@ -70,17 +75,17 @@
                 <form action="SvUsuario" method="POST"
                 <div id="usuario-details">
                     <div class="form-outline mb-4">
-                        <input type="text" id="form2Example27" class="form-control form-control-lg"name="Cedula" />
-                        <label class="form-label" for="form2Example27">Cédula</label>
+                        <input type="text" id="Cedula" class="form-control form-control-lg"name="Cedula" />
+                        <label class="form-label" for="form2Example27">Cedula</label>
                     </div>
 
                     <div class="form-outline mb-4">
-                        <input type="text" id="form2Example27" class="form-control form-control-lg"name="Nombre de usuario"/>
+                        <input type="text" id="NombreUsuario" class="form-control form-control-lg"name="Nombre de usuario"/>
                         <label class="form-label" for="form2Example27">Nombre de usuario</label>
                     </div>
 
                     <div class="form-outline mb-4">
-                        <input type="password" id="form2Example27" class="form-control form-control-lg"name="Contraseña"/>
+                        <input type="password" id="Contraseña" class="form-control form-control-lg"name="Contraseña"/>
                         <label class="form-label" for="form2Example27">Contraseña</label>
                     </div>
 
