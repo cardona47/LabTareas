@@ -74,26 +74,31 @@
             <div class="modal-body">
                 <form action="SvUsuario" method="POST"
                 <div id="usuario-details">
-                    <div class="form-outline mb-4">
-                        <input type="text" id="Cedula" class="form-control form-control-lg"name="Cedula" />
-                        <label class="form-label" for="form2Example27">Cedula</label>
-                    </div>
-
-                    <div class="form-outline mb-4">
-                        <input type="text" id="NombreUsuario" class="form-control form-control-lg"name="Nombre de usuario"/>
-                        <label class="form-label" for="form2Example27">Nombre de usuario</label>
-                    </div>
-
-                    <div class="form-outline mb-4">
-                        <input type="password" id="Contraseña" class="form-control form-control-lg"name="Contraseña"/>
-                        <label class="form-label" for="form2Example27">Contraseña</label>
-                    </div>
-
-                    <button type="submit" class="btn btn-dark btn-lg btn-block" id="btnRegistrar">Registrarse</button>
-                    </form>
-
-                </div>
+            <div class="form-group">
+                <label for="Cedula">Cedula</label>
+                <input type="text" id="Cedula" class="form-control form-control-lg" name="Cedula" required>
+                <div class="invalid-feedback">Por favor, ingresa tu cédula.</div>
             </div>
+
+            <div class="form-group">
+                <label for="NombreUsuario">Nombre de usuario</label>
+                <input type="text" id="NombreUsuario" class="form-control form-control-lg" name="NombreUsuario" required>
+                <div class="invalid-feedback">Por favor, ingresa tu nombre de usuario.</div>
+            </div>
+
+            <div class="form-group">
+                <label for="Contrasenia">Contraseña</label>
+                <input type="password" id="Contrasenia" class="form-control form-control-lg" name="Contrasenia" required>
+                <div class="invalid-feedback">Por favor, ingresa tu contraseña.</div>
+            </div>
+
+            <div class="form-group">
+                <button type="submit" class="btn btn-dark btn-lg btn-block" id="btnRegistrar">Registrarse</button>
+            </div>
+        </div>
+                </form>
+            </div>
+            
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
             </div>
@@ -110,6 +115,7 @@
         });
     });
 </script>
+
 <%@include file = "templates/footer.jsp" %>
 
 

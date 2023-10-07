@@ -4,15 +4,18 @@
  */
 package Servlets;
 
+import com.umariana.mundo.RegistrarUsuarios;
 import com.umariana.mundo.Usuario;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import static jdk.jpackage.internal.Arguments.CLIOptions.context;
 
 /**
  *
@@ -59,8 +62,8 @@ public class SvUsuario extends HttpServlet {
         ArrayList<Usuario> usuarios = new ArrayList<>();
         
         String cedula = request.getParameter("Cedula");
-        String nombre = request.getParameter("Nombre de usuario");
-        String contra = request.getParameter("Contraseña");
+        String nombre = request.getParameter("NombreUsuario");
+        String contra = request.getParameter("Contrasenia");
         
         System.out.println(cedula);
         System.out.println(nombre);
@@ -68,6 +71,9 @@ public class SvUsuario extends HttpServlet {
         
         Usuario usuario = new Usuario(cedula, nombre, contra);
         usuarios.add(usuario);
+        RegistrarUsuarios.guardarUsuario(usuarios, getServletContext());
+        
+        
         
         
         
