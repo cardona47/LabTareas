@@ -42,21 +42,17 @@ public class SvUsuario extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
-        ArrayList<Usuario> usuariosnuevos = new ArrayList<>();
-        
         String cedulan = request.getParameter("Cedulan");
         String nombre = request.getParameter("NombreUsuarion");
         String contran = request.getParameter("Contrasenian");
         
         Usuario usuarionuevo = new Usuario(cedulan,nombre, contran);
-        usuariosnuevos.add(usuarionuevo);
         
-        RegistrarUsuarios.guardarUsuario(usuariosnuevos, getServletContext());
+        ArrayList<Usuario> listaUsuarios = RegistrarUsuarios.cargarUsuario(getServletContext());
         
-        ArrayList<Usuario> UsuariosR = RegistrarUsuarios.cargarUsuario(getServletContext());
-        UsuariosR.add(usuarionuevo);
-        
-        RegistrarUsuarios.guardarUsuario(usuariosnuevos, getServletContext());
+        listaUsuarios.add(usuarionuevo);
+        RegistrarUsuarios.guardarUsuario(listaUsuarios, getServletContext());
+
         request.getRequestDispatcher("index.jsp").forward(request, response);
          
     }

@@ -17,10 +17,7 @@ import javax.servlet.ServletContext;
  * @author Acer
  */
 public class RegistrarUsuarios {
-    
-    public static ArrayList<Usuario> darUsuarios = new ArrayList<>();
 
-    
     public static void guardarUsuario(ArrayList<Usuario> usuariosnuevos, ServletContext context) throws IOException {
         String relativePath = "/data/usuarios.txt";
         String absPath = context.getRealPath(relativePath);
@@ -41,7 +38,7 @@ public class RegistrarUsuarios {
     }
     
     public static ArrayList<Usuario> cargarUsuario(ServletContext context) throws IOException {
-        ArrayList<Usuario> listaDeUsuarios = new ArrayList<>();
+        ArrayList<Usuario> listaUsuarios = new ArrayList<>();
         String relativePath = "/data/usuarios.txt";
         String absPath = context.getRealPath(relativePath);
 
@@ -58,7 +55,7 @@ public class RegistrarUsuarios {
                 nuevoUsuario.setNombreUsuario(nombre);
                 nuevoUsuario.setContrasenia(contrasenia);
 
-                listaDeUsuarios.add(nuevoUsuario);
+                listaUsuarios.add(nuevoUsuario);
                 linea = lector.readLine();
             }
             System.out.println("Datos de usuarios cargados exitosamente desde: usuarios.txt");
@@ -66,7 +63,7 @@ public class RegistrarUsuarios {
             e.printStackTrace();
             System.out.println("Error al cargar los datos de usuarios: " + e.getMessage());
         }
-        return listaDeUsuarios;
+        return listaUsuarios;
     }
 
 }
