@@ -49,29 +49,30 @@ public class SvLogin extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
+        //pedimos los datos del formulario del login y los guardamos en variables
         String cedula = request.getParameter("Cedula");
         String contrasenia = request.getParameter("contrasenia");
         
+        //llamamos al metodo de registrar usuarios de la clase "registrarUsuarios.java" y lo guardamos en un ArrayList
         ArrayList<Usuario> UsuariosR = RegistrarUsuarios.cargarUsuario(getServletContext());
         
-        boolean autenticado = false;
-    //validacion de los datos que ingresa el usuario con los datos del ArrayList
+        //Aqui tenemos todo el proceso de validacion del usuario con su cedula y contraseña con una variable booleana        
+        boolean autenticado = false;    
     for (Usuario usuario : UsuariosR) {
         if (usuario.getCedula().equals(cedula) && usuario.getContrasenia().equals(contrasenia)) {
-            autenticado = true;
-            break; // Si el usuario es validado sera redirigido
+            autenticado = true;            
+            break; // Si encontramos una coincidencia, no necesitamos seguir buscando
         }
     }
     
     if (autenticado) {
-        // Autenticación exitosa, redirige al usuario a Tareas.jsp
+        //Validacion exitosa, redirige al usuario a la página de tareas
         response.sendRedirect("Tareas.jsp");
     } else {
-        // Autenticación fallida, redirige al usuario a index.jsp
+        //Validacion fallida, redirige al usuario a la página index
         response.sendRedirect("index.jsp");
     }
 
-        processRequest(request, response);
     }
 
     /**
