@@ -20,16 +20,17 @@
                 <div class="collapse navbar-collapse justify-content-between" id="navbarNav">
                     <ul class="navbar-nav">
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Inicio</a>
+                            <a class="nav-link" href="#" style="color: white;">Inicio</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Tareas</a>
+                            <a class="nav-link" href="#" style="color: white;">Tareas</a>
                         </li>
                     </ul>
                     <div class="navbar-text text-center" style="color: white;">
                         Bienvenido, <%= usuarioVerificado%>!
                     </div>
-                    <a href="index.jsp" class="btn btn-danger">Cerrar Sesión</a>
+                    <a href="index.jsp" class="btn btn-warning" style="background-color: #ff6219; border-color: #ff6219; color: white;">Cerrar Sesión</a>
+
                 </div>
             </div>
         </nav>
@@ -59,15 +60,15 @@
                             <label class="input-group-text" for="raza">Fecha de vencimiento</label>
                             <input type="date" name="raza" class="form-control">
                         </div>
-                        <button type="submit" class="btn btn-primary" style="background-color: #2E86C1; border-color: #2E86C1;">Agregar tarea</button>
+                        <button type="submit" class="btn btn-primary" style="background-color: #ff6219; border-color: #ff6219;">Agregar tarea</button>
                     </form>
                 </div>
             </div>
 
             <%-- tabla para visualizar las tareas agregadas --%>
-            <div <div class="col-md-8"> <!-- 8 columnas para la tabla -->
+            <div class="col-md-8">
                 <div>
-                    <table class="table table-bordered" style="background-color: #1A1A1A; box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);">
+                    <table class="table table-bordered" style="background-color: #1a1a1a; box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);">
                         <thead class="thead-dark">
                             <tr>
                                 <th scope="col">#</th>
@@ -76,9 +77,9 @@
                                 <th scope="col">Fecha de vencimiento</th>
                             </tr>
                         </thead>
-                        <tbody>
+                        <tbody style="background-color: #1a1a1a; color: black;">
                             <tr>
-                                <th scope="row"></th>
+                                <td></td>
                                 <td></td>
                                 <td></td>
                                 <td></td>
@@ -87,6 +88,8 @@
                     </table>
                 </div>
             </div>
+
+
         </div>
     </div>
 </section>
