@@ -8,18 +8,18 @@
 <!DOCTYPE html>
 
 <%@include file = "templates/header.jsp" %>
- <section class="vh-100" style="background-color: #9A616D;">
+ <section class="vh-100" style="background: linear-gradient(to top right, #000000, #007f00);">
   <div class="container py-5 h-100">
     <div class="row d-flex justify-content-center align-items-center h-100">
       <div class="col col-xl-10">
-        <div class="card" style="border-radius: 1rem;">
+        <div class="card" style="border-radius: 1rem; background-color: #1A1A1A;">
           <div class="row g-0">
             <div class="col-md-6 col-lg-5 d-none d-md-block">
-              <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/img1.webp"
+              <img src="https://s2.best-wallpaper.net/wallpaper/iphone/1811/Orange-light-circle-black-background_iphone_1080x1920.jpg"
                 alt="login form" class="img-fluid" style="border-radius: 1rem 0 0 1rem;" />
             </div>
             <div class="col-md-6 col-lg-7 d-flex align-items-center">
-              <div class="card-body p-4 p-lg-5 text-black">
+              <div class="card-body p-4 p-lg-5 text-white">
 
                 <form action="SvLogin" method="POST">
 
@@ -32,19 +32,19 @@
 
                   <div class="form-outline mb-4">
                     <input type="text" id="form2Example17" class="form-control form-control-lg"name="Cedula" />
-                    <label class="form-label" for="form2Example17">Cedula Usuario</label>
+                    <label class="form-label" for="form2Example17" style="color: white;">Cedula Usuario</label>
                   </div>
                   
                   <div class="form-outline mb-4">
                     <input type="password" id="form2Example27" class="form-control form-control-lg"name="contrasenia" />
-                    <label class="form-label" for="form2Example27">Contraseña</label>
+                    <label class="form-label" for="form2Example27" style="color: white;">Contraseña</label>
                   </div>
 
                   <div class="pt-1 mb-4">
-                    <button class="btn btn-dark btn-lg btn-block" type="submit">Login</button>
+                    <button class="btn btn-dark btn-lg btn-block" type="submit" style="background-color: #006600; ">Login</button>
                   </div>
                   
-                  <p class="mb-5 pb-lg-2" style="color: #393f81;">No está registrado? <a href="#!" style="color: #393f81;" data-bs-toggle="modal" data-bs-target="#exampleModal">Regístrate aquí</a></p>
+                  <p class="mb-5 pb-lg-2" style="color: #ffffff;">No está registrado? <a href="#!" style="color: #ff6219;" data-bs-toggle="modal" data-bs-target="#exampleModal">Regístrate aquí</a></p>
                 </form>
 
               </div>
@@ -58,41 +58,41 @@
     <!-- ventana Modal para registro de nuevos usuarios-->
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
-        <div class="modal-content">
+        <div class="modal-content" style="background-color: #1A1A1A;">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Registrarse</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                <h5 class="modal-title" id="exampleModalLabel" style="color: white;">Registrarse</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" style="background-color: #FFFFFF;"></button>
             </div>
             <div class="modal-body">
                 <form action="SvUsuario" method="POST">
                 <div id="usuario-details">
             <div class="form-group">
-                <label for="Cedula">Cedula</label>
+                <label for="Cedula" style="color: white;">Cedula</label>
                 <input type="text" id="Cedulan" class="form-control form-control-lg" name="Cedulan" required>
-                <div class="invalid-feedback">Por favor, ingresa tu cédula.</div>
+                <div class="invalid-feedback" style="color: white;">Por favor, ingresa tu cédula.</div>
             </div>
 
             <div class="form-group">
-                <label for="NombreUsuario">Nombre de usuario</label>
+                <label for="NombreUsuario" style="color: white;">Nombre de usuario</label>
                 <input type="text" id="NombreUsuarion" class="form-control form-control-lg" name="NombreUsuarion" required>
-                <div class="invalid-feedback">Por favor, ingresa tu nombre de usuario.</div>
+                <div class="invalid-feedback" style="color: white;">Por favor, ingresa tu nombre de usuario.</div>
             </div>
 
             <div class="form-group">
-                <label for="Contrasenia">Contraseña</label>
+                <label for="Contrasenia" style="color: white;">Contraseña</label>
                 <input type="password" id="Contrasenian" class="form-control form-control-lg" name="Contrasenian" required>
-                <div class="invalid-feedback">Por favor, ingresa tu contraseña.</div>
+                <div class="invalid-feedback" style="color: white;">Por favor, ingresa tu contraseña.</div>
             </div>
 
             <div class="form-group">
-                <button type="submit" class="btn btn-dark btn-lg btn-block" id="btnRegistrar">Registrarse</button>
+                <button type="submit" class="btn btn-dark btn-lg btn-block" id="btnRegistrar" style="background-color: #006600;">Registrarse</button>
             </div>
         </div>
                 </form>
             </div>
             
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" style="color: white; background-color: #ff6219;">Cerrar</button>
             </div>
         </div>
     </div>
