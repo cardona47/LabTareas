@@ -7,6 +7,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <%@include file = "templates/header.jsp" %>
+<%-- navbar de la pagina --%>
 <section class="vh-100" style="background: linear-gradient(to top right, #007f00, #000000);">
     <div class="container p-4"> <!-- clase contenedora -->
         <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #1A1A1A;">
@@ -32,7 +33,7 @@
         </nav>
         
         
-        
+        <%-- formulario para agregar tareas --%>
         <h1 class="text-center mt-4 mb-4" style="color: white;">Tareas</h1>
         <div class="row">
             <div class="col-md-4 d-flex justify-content-center align-items-center"> <!-- Agrega las clases d-flex, justify-content-center y align-items-center -->
@@ -61,6 +62,8 @@
                         </form>
                     </div>
             </div>
+            
+            <%-- tabla para visualizar las tareas agregadas --%>
             <div <div class="col-md-8"> <!-- 8 columnas para la tabla -->
                 <div>
                     <table class="table table-bordered" style="background-color: #1A1A1A; box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);">

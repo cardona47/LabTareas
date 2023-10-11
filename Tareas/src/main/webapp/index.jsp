@@ -20,6 +20,8 @@
             </div>
             <div class="col-md-6 col-lg-7 d-flex align-items-center">
               <div class="card-body p-4 p-lg-5 text-white">
+                  
+                  <%-- formulario para el login --%>
 
                 <form action="SvLogin" method="POST">
 
@@ -55,7 +57,8 @@
     </div>
   </div>
 </section>
-    <!-- ventana Modal para registro de nuevos usuarios-->
+                  
+    <!-- ventana Modal para formulario de registro de nuevos usuarios-->
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content" style="background-color: #1A1A1A;">

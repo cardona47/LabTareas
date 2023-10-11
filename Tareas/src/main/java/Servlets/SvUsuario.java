@@ -55,7 +55,7 @@ public class SvUsuario extends HttpServlet {
     for (Usuario usuarioslist : listaUsuarios) {
         if (usuarioslist.getCedula().equals(cedulan)) {
             cedulaUnica = false;
-            break; // No es necesario continuar verificando, encontramos una cedula registrada
+            break;
         }
     }
 
