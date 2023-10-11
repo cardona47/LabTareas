@@ -11,9 +11,12 @@
 
 <section class="vh-100" style="background: linear-gradient(to top right, #007f00, #000000);">
     <div class="container p-4"> <!-- clase contenedora -->
-        <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #1A1A1A;"> <%-- navbar de la pagina --%>
+        <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #1A1A1A;">
             <div class="container-fluid">
-                <a class="navbar-brand" href="#" style="color: white;">Tu Organizador de Tareas</a>
+                <a class="navbar-brand d-flex align-items-center" href="#" style="color: white;">
+                    <i class="fas fa-cubes fa-2x me-3" style="color: #ff6219;"></i>
+                    <span style="line-height: 1.2;">Organizando tu mundo</span>
+                </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -30,7 +33,6 @@
                         Bienvenido, <%= usuarioVerificado%>!
                     </div>
                     <a href="index.jsp" class="btn btn-warning" style="background-color: #ff6219; border-color: #ff6219; color: white;">Cerrar Sesión</a>
-
                 </div>
             </div>
         </nav>
@@ -68,16 +70,16 @@
             <%-- tabla para visualizar las tareas agregadas --%>
             <div class="col-md-8">
                 <div>
-                    <table class="table table-bordered" style="background-color: #1a1a1a; box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);">
+                    <table class="table table-bordered" style="background-color: #1a1a1a; box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);color: white;">
                         <thead class="thead-dark">
                             <tr>
                                 <th scope="col">#</th>
                                 <th scope="col">Titulo</th>
-                                <th scope="col">Descripcion</th>
+                                <th scope="col">Descripción</th>
                                 <th scope="col">Fecha de vencimiento</th>
                             </tr>
                         </thead>
-                        <tbody style="background-color: #1a1a1a; color: black;">
+                        <tbody style="background-color: #1a1a1a;">
                             <tr>
                                 <td></td>
                                 <td></td>
