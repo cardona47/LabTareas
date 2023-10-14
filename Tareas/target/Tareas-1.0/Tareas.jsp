@@ -77,10 +77,12 @@
                                 <th scope="col">Titulo</th>
                                 <th scope="col">Descripción</th>
                                 <th scope="col">Fecha de vencimiento</th>
+                                <th scope="col">Acciones</th>
                             </tr>
                         </thead>
                         <tbody style="background-color: #1a1a1a;">
                             <tr>
+                                <td></td>
                                 <td></td>
                                 <td></td>
                                 <td></td>
