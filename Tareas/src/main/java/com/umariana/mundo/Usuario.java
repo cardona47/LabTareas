@@ -11,9 +11,9 @@ package com.umariana.mundo;
  */
 public class Usuario {
     
-    String cedula;
-    String nombreUsuario;
-    String contrasenia;
+    private String cedula;
+    private String nombreUsuario;
+    private String contrasenia;
 
     public Usuario() {
     }
