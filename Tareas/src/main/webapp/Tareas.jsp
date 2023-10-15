@@ -43,24 +43,24 @@
             <div class="col-md-4 d-flex justify-content-center align-items-center"> <!-- Agrega las clases d-flex, justify-content-center y align-items-center -->
                 <div class="card card-body text-center" style="background-color: #1A1A1A; box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);">
                     <h4 class="text-center" style="color: white;">Agrega tareas</h4>
-                    <form>
+                    <form action="SvTarea" method="POST">
                         <div class="input-group mb-3">
                             <label class="input-group-text" for="nombre">Id</label>
-                            <input type="text" name ="nombre" class="form-control">
+                            <input type="text" name ="id" class="form-control">
                         </div>                                            
 
                         <div class="input-group mb-3">
                             <label class="input-group-text" for="raza">Titulo</label>
-                            <input type="text" name="raza" class="form-control">
+                            <input type="text" name="titulo" class="form-control">
                         </div>
                         <div class="input-group mb-3">
                             <label class="input-group-text" for="nombre">Descripcion</label>
-                            <input type="text" name ="nombre" class="form-control">
+                            <input type="text" name ="descripcion" class="form-control">
                         </div>                                            
 
                         <div class="input-group mb-3">
                             <label class="input-group-text" for="raza">Fecha de vencimiento</label>
-                            <input type="date" name="raza" class="form-control">
+                            <input type="date" name="fechav" class="form-control">
                         </div>
                         <button type="submit" class="btn btn-primary" style="background-color: #ff6219; border-color: #ff6219;">Agregar tarea</button>
                     </form>
