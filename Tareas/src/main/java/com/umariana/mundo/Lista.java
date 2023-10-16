@@ -10,6 +10,7 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -63,23 +64,26 @@ public class Lista {
     /**
      * Metodo para cargar la lista o los elementos de la lista al archivo de texto
      * Cada dato se guarda separado por coma en el archivo de texto
-     * @param listaActualizada
+     * @param listaTareas
      * @param context 
      */
     public void cargarLista(Lista listaTareas, ServletContext context) {
+        //ruta del archivo
         String filePath = context.getRealPath("/data/tareas.txt");
         File archivo = new File(filePath);
 
-       try (PrintWriter writer = new PrintWriter(archivo)) {
+        try (PrintWriter writer = new PrintWriter(archivo)) {
             Nodo temp = listaTareas.inicio;
-            //Mientras la referencia de apoyo no apunte a null va a escribir todas las tareas agregadas
+            
+            DateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
             while (temp != null) {
                 Tarea tarea = temp.getTarea();
+                //Para escribir correctamente la linea, tenemos que corvertir el tipo de dato  de la fecha de Date a String
+                String fechaFormateada = formato.format(tarea.getFechaDeVencimiento());
                 writer.println(tarea.getId() + ","
                         + tarea.getTitulo() + ","
                         + tarea.getDescripcion() + "," 
-                        + tarea.getFechaDeVencimiento());
-                //Aqui solicitamos el siguiente elemento de la lista con el metodo get
+                        + fechaFormateada);
                 temp = temp.getSiguiente();
             }
         } catch (FileNotFoundException e) {
@@ -102,23 +106,28 @@ public class Lista {
         try (BufferedReader br = new BufferedReader(new FileReader(file))) {
             String line;
             while ((line = br.readLine()) != null) {
-                String[] atributos = line.split(";");
+                String[] atributos = line.split(",");
                 if (atributos.length == 4) {
                     int id = Integer.parseInt(atributos[0]);
                     String titulo = atributos[1];
                     String descripcion = atributos[2];
                     String fechaVencimiento = atributos[3];
 
-                    // Casteo de la fecha de String a Date para poder inicializar el contructor
-                    SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-                    Date fechaC = dateFormat.parse(fechaVencimiento);
-                    
-                    //Agregamos el objeto a la nueva lista que nos va a ayudar a almacenar todas las tareas agregadas por el usuario
-                    Tarea tarea = new Tarea(id, titulo, descripcion, fechaC);
-                    listaA.agregarTarea(tarea);
+                    DateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
+                    try {
+                        // Conversión de String a Date
+                        Date fechaConvertida = formato.parse(fechaVencimiento);
+                        // Agregar la tarea con la fecha convertida
+                        Tarea tarea = new Tarea(id, titulo, descripcion, fechaConvertida);
+                        listaA.agregarTarea(tarea);
+                    } catch (ParseException e) {
+                        // Manejo de la excepción de análisis de fecha aquí
+                        e.printStackTrace();
+                    }
                 }
             }
-        } catch (IOException | ParseException e) {
+        } catch (IOException e) {
+            // Manejo de la excepción de E/S aquí
             e.printStackTrace();
         }
         return listaA;

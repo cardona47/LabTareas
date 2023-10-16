@@ -68,11 +68,14 @@ public class SvTarea extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        
+        //recibimos los datos de la tarea ingresados por el usuario
         String id = request.getParameter("id");
         String titulo = request.getParameter("titulo");
         String descripcion = request.getParameter("descripcion");
         String fecha = request.getParameter("fechav");
-
+        
+        //Convertimos o casteamos la fecha que es tipo String a Date para poder inicializarla en el constructor
         Date fechaV = null;
         try {
             SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
@@ -80,24 +83,14 @@ public class SvTarea extends HttpServlet {
         } catch (ParseException e) {
             e.printStackTrace();
         }
+        //Creamos un nuevo objeto de tipo tarea e inicializamos los atributos con los datos que ingreso el usuario
         Tarea nuevaTarea = new Tarea(Integer.parseInt(id), titulo, descripcion, fechaV);
-        
-        HttpSession session = request.getSession();
-        Lista listaTareas = (Lista) session.getAttribute("listaTareas");
-        
-        if (listaTareas == null) {
-            listaTareas = new Lista();
-            // Guárdala en la sesión
-            session.setAttribute("listaTareas", listaTareas);
-        }
-        //Agregamos la nueva tarea a la lista 
+        //Creamos una nueva lista
+        Lista listaTareas = new Lista();
+        //Agregamos la nueva tarea a la lista creada
         listaTareas.agregarTarea(nuevaTarea);
-
-        // Guarda la tarea en el archivo
+        //Cargamos la lista al archivo de texto
         listaTareas.cargarLista(listaTareas, getServletContext());
-
-        // Redirige a la página Tareas.jsp
-        response.sendRedirect("tareas.jsp");
     }
 
     /**
