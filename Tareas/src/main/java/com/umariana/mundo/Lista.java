@@ -61,6 +61,8 @@ public class Lista {
             fin = actual;                    
         }
     }
+    
+    //agregar metodos para insertar tarea antes de y despues de cualquier tarea
     /**
      * Metodo para cargar la lista o los elementos de la lista al archivo de texto
      * Cada dato se guarda separado por coma en el archivo de texto

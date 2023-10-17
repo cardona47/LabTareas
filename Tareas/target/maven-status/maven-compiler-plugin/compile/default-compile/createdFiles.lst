@@ -1,6 +1,10 @@
+com\umariana\mundo\Tarea.class
+Servlets\SvTarea.class
 com\umariana\tareas\resources\JavaEE8Resource.class
 com\umariana\mundo\Usuario.class
+com\umariana\mundo\Lista.class
 com\umariana\mundo\RegistrarUsuarios.class
 com\umariana\mundo\JAXRSConfiguration.class
+com\umariana\mundo\Nodo.class
 Servlets\SvLogin.class
 Servlets\SvUsuario.class
