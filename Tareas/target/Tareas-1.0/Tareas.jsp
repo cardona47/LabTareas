@@ -64,6 +64,18 @@
                         </div>
                         <button type="submit" class="btn btn-primary" style="background-color: #ff6219; border-color: #ff6219;">Agregar tarea</button>
                     </form>
+                    <div class="mt-4">
+    <h4 class="text-center" style="color: white;">Agregar tarea</h4>
+    <div class="form-check">
+        <input class="form-check-input" type="radio" name="estadoTarea" id="pendiente" value="pendiente" checked>
+        <label class="form-check-label" for="pendiente" style="color: white;">Antes de</label>
+    </div>
+    <div class="form-check">
+        <input class="form-check-input" type="radio" name="estadoTarea" id="enProgreso" value="enProgreso">
+        <label class="form-check-label" for="enProgreso" style="color: white;">Despues de</label>
+    </div>
+</div>
+
                 </div>
             </div>
 
