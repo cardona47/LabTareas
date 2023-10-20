@@ -21,118 +21,192 @@ import javax.servlet.ServletContext;
  * @author Samuel Bolaños
  */
 public class Lista {
-    private Nodo inicio;
-    private Nodo fin;
-
-    public Lista() {
-    }
-
-    public Lista(Nodo inicio, Nodo fin) {
-        this.inicio = inicio;
-        this.fin = fin;
-    }
-    /**
-     * Metodo para verificar si la lista ya tiene tareas o no
-     * @return 
-     */
-    public boolean verificarContenido(){
-        if(inicio==null){
-            return true;
-        }else{
-            return false;
-        }
-    }
-    /**
-     * Metodo para agregar una tarea a un nodo de la tarea
-     * @param tarea 
-     */
-    public void agregarTarea(Tarea tarea){
-        Nodo actual;
-        //Si la Lista no tiene tareas, se agrega la tarea al inicio de la lista
-        if(verificarContenido()){
-            actual = new Nodo(tarea, null);
-            //referencias de apoyo para hacer el recorrido de la lista
-            inicio = actual;
-            fin = actual;
-        }else{
-            //Si ya tiene tareas agregadas, se agrega la tarea despues de la ultima agregada
-            actual = new Nodo(tarea, inicio);
-            fin.setSiguiente(actual);
-            fin = actual;                    
-        }
-    }
+    public Nodo inicio = null;
+    public Nodo fin = null;
     
-    //agregar metodos para insertar tarea antes de y despues de cualquier tarea
-    /**
-     * Metodo para cargar la lista o los elementos de la lista al archivo de texto
-     * Cada dato se guarda separado por coma en el archivo de texto
-     * @param listaTareas
-     * @param context 
-     */
-    public void cargarLista(Lista listaTareas, ServletContext context) {
-        //ruta del archivo
-        String filePath = context.getRealPath("/data/tareas.txt");
-        File archivo = new File(filePath);
+    public boolean verificarContenido() {
+        return inicio == null;
+    }
+    public class Nodo {
+    public Tarea tarea;
+    public Nodo siguiente;
 
-        try (PrintWriter writer = new PrintWriter(archivo)) {
-            Nodo temp = listaTareas.inicio;
-            
-            DateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
-            while (temp != null) {
-                Tarea tarea = temp.getTarea();
-                //Para escribir correctamente la linea, tenemos que corvertir el tipo de dato  de la fecha de Date a String
-                String fechaFormateada = formato.format(tarea.getFechaDeVencimiento());
-                writer.println(tarea.getId() + ","
-                        + tarea.getTitulo() + ","
-                        + tarea.getDescripcion() + "," 
-                        + fechaFormateada);
-                temp = temp.getSiguiente();
-            }
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
+    public Nodo(Tarea tarea) {
+        this.tarea = tarea;
+        this.siguiente = null;
+    }    
+}
+// Método para agregar una nueva tarea al comienzo de la lista
+    public void agregarTareaAlInicio(Tarea tarea) {
+        Nodo nuevoNodo = new Nodo(tarea);
+
+        if (inicio == null) {
+            // Si la lista está vacía, el nuevo nodo es tanto el inicio como el fin
+            inicio = nuevoNodo;
+            fin = nuevoNodo;
+        } else {
+            // Si no está vacía, el nuevo nodo se agrega al comienzo y se actualiza el inicio
+            nuevoNodo.siguiente = inicio;
+            inicio = nuevoNodo;
         }
     }
+
+    // Método para agregar una nueva tarea al final de la lista
+    public void agregarTareaAlFinal(Tarea tarea) {
+        Nodo nuevoNodo = new Nodo(tarea);
+
+        if (inicio == null) {
+            // Si la lista está vacía, el nuevo nodo es tanto el inicio como el fin
+            inicio = nuevoNodo;
+            fin = nuevoNodo;
+        } else {
+            // Si no está vacía, el nuevo nodo se agrega al final y se actualiza el fin
+            fin.siguiente = nuevoNodo;
+            fin = nuevoNodo;
+        }
+    }
+
+    /**
+     * Adiciona una tarea a la lista de tareas antes de la tarea con el id especificado.
+     *
+     * @param id El id de la tarea antes de la cual se va a insertar la nueva tarea.
+     * @param tarea La tarea que se va a agregar.
+     */
+    public void agregarTareaAntesDe(int id, Tarea tarea) {
+        if (inicio == null) {
+            // Puedes manejar esto de alguna manera, por ejemplo, lanzar una excepción o manejar el caso especial.
+            // throw new NoExisteException(id);
+            return;
+        } else if (id == inicio.tarea.getId()) {
+            Nodo nuevoNodo = new Nodo(tarea);
+            nuevoNodo.siguiente = inicio;
+            inicio = nuevoNodo;
+        } else {
+            Nodo anterior = localizarAnteriorPorId(id);
+            if (anterior == null) {
+                // Puedes manejar esto de alguna manera, por ejemplo, lanzar una excepción o manejar el caso especial.
+                // throw new NoExisteException(id);
+                return;
+            }
+            Nodo nuevoNodo = new Nodo(tarea);
+            nuevoNodo.siguiente = anterior.siguiente;
+            anterior.siguiente = nuevoNodo;
+        }
+    }
+
+    
+    /**
+     * Adiciona una tarea a la lista de tareas después de la tarea con el id especificado.
+     *
+     * @param id El id de la tarea después de la cual se va a insertar la nueva tarea.
+     * @param tarea La tarea que se va a agregar.
+     */
+    public void agregarTareaDespuesDe(int id, Tarea tarea) {
+        Nodo anterior = localizarPorId(id);
+
+        if (anterior == null) {
+            // Puedes manejar esto de alguna manera, por ejemplo, lanzar una excepción o manejar el caso especial.
+            // throw new NoExisteException(id);
+            return;
+        } else {
+            Nodo nuevoNodo = new Nodo(tarea);
+            nuevoNodo.siguiente = anterior.siguiente;
+            anterior.siguiente = nuevoNodo;
+        }
+    }
+
+    /**
+     * Busca la tarea con el id dado en la lista de tareas.
+     *
+     * @param id El id de la tarea que se va a buscar.
+     * @return La tarea con el id especificado. Si la tarea no existe, se retorna null.
+     */
+    public Nodo localizarPorId(int id) {
+        Nodo actual = inicio;
+        while (actual != null && actual.tarea.getId() != id) {
+            actual = actual.siguiente;
+        }
+        return actual;
+    }
+
+    /**
+     * Busca la tarea anterior a la tarea con el id especificado.
+     *
+     * @param id El id de la tarea de la cual se desea encontrar la tarea anterior.
+     * @return La tarea anterior a la tarea con el id dado. Se retorna null si la tarea con el id dado no existe o si es la primera de la lista.
+     */
+    public Nodo localizarAnteriorPorId(int id) {
+        Nodo anterior = null;
+        Nodo actual = inicio;
+
+        while (actual != null && actual.tarea.getId() != id) {
+            anterior = actual;
+            actual = actual.siguiente;
+        }
+
+        return (actual != null) ? anterior : null;
+    }
+
     /**
      * Metodo para leer el archivo de texto
      * @param context
      * @return 
      */
-    public static Lista leerArchivo(ServletContext context) {
+    // Método para guardar la lista en un archivo de texto
+    public static void guardarLista(Lista listaActualizada, ServletContext context) {
         // Ruta relativa
         String rutaRelativa = "/data/tareas.txt";
+
         // Ruta absoluta
         String rutaAbsoluta = context.getRealPath(rutaRelativa);
 
         File file = new File(rutaAbsoluta);
-        Lista listaA = new Lista();
+
+        try (PrintWriter writer = new PrintWriter(file)) {
+            Nodo temp = listaActualizada.inicio;
+            while (temp != null) {
+                Tarea tarea = temp.tarea;
+                // Guarda los atributos de la tarea en el archivo separados por un punto y coma
+                writer.println(tarea.getId() + ";" + tarea.getTitulo() + ";" + tarea.getDescripcion() + ";" + tarea.getFechaDeVencimiento());
+                temp = temp.siguiente;
+            }
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
+    // Método para leer una lista desde un archivo de texto
+    public static Lista leerLista(ServletContext context) {
+        // Ruta relativa
+        String rutaRelativa = "/data/tareas.txt";
+
+        // Ruta absoluta
+        String rutaAbsoluta = context.getRealPath(rutaRelativa);
+
+        File file = new File(rutaAbsoluta);
+        Lista lista = new Lista();
+
         try (BufferedReader br = new BufferedReader(new FileReader(file))) {
             String line;
             while ((line = br.readLine()) != null) {
-                String[] atributos = line.split(",");
+                String[] atributos = line.split(";");
                 if (atributos.length == 4) {
                     int id = Integer.parseInt(atributos[0]);
                     String titulo = atributos[1];
                     String descripcion = atributos[2];
-                    String fechaVencimiento = atributos[3];
+                    String fechaVStr = atributos[3];
 
-                    DateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
-                    try {
-                        // Conversión de String a Date
-                        Date fechaConvertida = formato.parse(fechaVencimiento);
-                        // Agregar la tarea con la fecha convertida
-                        Tarea tarea = new Tarea(id, titulo, descripcion, fechaConvertida);
-                        listaA.agregarTarea(tarea);
-                    } catch (ParseException e) {
-                        // Manejo de la excepción de análisis de fecha aquí
-                        e.printStackTrace();
-                    }
+                    // Realizar el parsing de la fecha desde la cadena
+                    SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+                    Date fechaV = dateFormat.parse(fechaVStr);
+
+                    Tarea tarea = new Tarea(id, titulo, descripcion, fechaV);
+                    lista.agregarTareaAlInicio(tarea);
                 }
             }
-        } catch (IOException e) {
-            // Manejo de la excepción de E/S aquí
+        } catch (IOException | ParseException e) {
             e.printStackTrace();
         }
-        return listaA;
+        return lista;
     }
 }
     
