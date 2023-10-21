@@ -62,7 +62,28 @@ public class SvTarea extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+          String tipo = request.getParameter("tipo");
+           if (tipo != null && tipo.equals("delete")) {
+            String idEliminar = request.getParameter("id");
+            if (idEliminar != null && !idEliminar.isEmpty()) {
+                HttpSession session = request.getSession();
+                Lista listaTareas = (Lista) session.getAttribute("listaTareas");
+
+                if (listaTareas != null) {
+                    try {
+                        int id = Integer.parseInt(idEliminar);
+                        listaTareas.eliminarTarea(id);
+                        // Guarda la lista actualizada en el archivo
+                        Lista.guardarLista(listaTareas, getServletContext());
+                    } catch (NumberFormatException e) {
+                        // Maneja la excepción si no se proporciona un ID válido
+                        e.printStackTrace();
+                    }
+                }
+            }
+        }
+        // Redirige de regreso a la página de tareas después de borrar la tarea con un mensaje de exito
+        response.sendRedirect("Tareas.jsp?eliminada=success");
     }
 
     /**
@@ -87,6 +108,7 @@ public class SvTarea extends HttpServlet {
         String idDespuesDe = request.getParameter("idDespuesDe");
         
         //Convertimos o casteamos la fecha que es tipo String a Date para poder inicializarla en el constructor
+        //Convertimos o casteamos la fecha que es tipo String a Date para poder inicializarla en el constructor
         Date fechaV = null;
         try {
             SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
@@ -96,10 +118,8 @@ public class SvTarea extends HttpServlet {
         }
         //Creamos un nuevo objeto de tipo tarea e inicializamos los atributos con los datos que ingreso el usuario
         Tarea nuevaTarea = new Tarea(Integer.parseInt(id), titulo, descripcion, fechaV);
-        
-        //Creamos una nueva lista
-        
         HttpSession session = request.getSession();
+        //conseguimos la lista de la session
         Lista listaTareas = (Lista) session.getAttribute("listaTareas");
 
         if (listaTareas == null) {
@@ -110,16 +130,16 @@ public class SvTarea extends HttpServlet {
         
         //Un filtro para los id de las tareas, para que sea un dato unico en las tareas ingresadas
         if (listaTareas != null) {
-        Lista.Nodo current = listaTareas.inicio;
-        while (current != null) {
-            if (current.tarea.getId() == Integer.parseInt(id)) {
-                // Manejar el caso de ID duplicado, por ejemplo, redirigir a una página de error o mostrar un mensaje de error
-                response.sendRedirect("Tareas.jsp?alert=error");
-                return;
+            Lista.Nodo nodoActual = listaTareas.inicio;
+            while (nodoActual != null) {
+                if (nodoActual.tarea.getId() == Integer.parseInt(id)) {
+                    //Caso de ID duplicado, redirigir a Tareas.jsp con una alerta de error
+                    response.sendRedirect("Tareas.jsp?alert=error");
+                    return;
+                }
+                nodoActual = nodoActual.siguiente;
             }
-            current = current.siguiente;
         }
-    }
         //funciones de los radio buttons
         if("primero".equals(posicion)){
             //Agrega la tarea al inicio de la lista
@@ -152,7 +172,7 @@ public class SvTarea extends HttpServlet {
         Lista.guardarLista(listaTareas, getServletContext());
 
         // Redirige a la página Tareas.jsp
-        response.sendRedirect("Tareas.jsp");
+        response.sendRedirect("Tareas.jsp?alert=success");
     }
 
     /**

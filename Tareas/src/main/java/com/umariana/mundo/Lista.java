@@ -10,7 +10,6 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -146,11 +145,61 @@ public class Lista {
 
         return (actual != null) ? anterior : null;
     }
+    /**
+     * Metodo para eliminar una tarea de la lista, solicitamos el id de la tarea a eliminar
+     * @param id 
+     */
+    public void eliminarTarea(int id) {
+        if (inicio == null) {
+            System.out.println("La lista de tareas está vacía, no se pudo eliminar la tarea con id: " + id);
+            return;
+        }
+
+        if (id == inicio.tarea.getId()) {
+            // La tarea es la primera de la lista
+            inicio = inicio.siguiente;
+        } else {
+            // La tarea es un elemento intermedio de la lista
+            Nodo anterior = localizarAnteriorPorId(id);
+            if (anterior == null) {
+                System.out.println("No se encontró una tarea con id: " + id + " para eliminar.");
+                return;
+            }
+            anterior.siguiente = anterior.siguiente.siguiente; // Desconectar la tarea
+        }
+
+    }
+    /**
+     * Metodo para editar los datos de una tarea de la lista
+     * @param id
+     * @param nuevoTitulo
+     * @param nuevaDescripcion
+     * @param nuevaFechadeV 
+     */
+    public void editarTarea(int id, String nuevoTitulo, String nuevaDescripcion, String nuevaFechadeV) {
+        Nodo tareaExistente = localizarPorId(id);
+
+        if (tareaExistente != null) {
+            // Actualiza los atributos de la tarea
+            tareaExistente.tarea.setTitulo(nuevoTitulo);
+            tareaExistente.tarea.setDescripcion(nuevaDescripcion);
+
+            // Convierte la cadena de fecha en un objeto Date
+            try {
+                SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+                Date nuevaFecha = dateFormat.parse(nuevaFechadeV);
+                tareaExistente.tarea.setFechaDeVencimiento(nuevaFecha);
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
 
     /**
      * Metodo para leer el archivo de texto
+     * @param listaActualizada
      * @param context
-     * @return 
      */
     // Método para guardar la lista en un archivo de texto
     public static void guardarLista(Lista listaActualizada, ServletContext context) {
