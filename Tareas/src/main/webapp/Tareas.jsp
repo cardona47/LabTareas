@@ -41,7 +41,7 @@
         </nav>
         <!-- Alertas de notificacion(tarea agregada y tarea eliminada -->          
         <div class="alert alert-success text-center" role="alert" style="display: none;" id="successAlert">
-            <strong> Tarea agregada a la lista</strong>
+            <strong>Tarea agregada</strong>
         </div>
         <div class="alert alert-success text-center" role="alert" style="display: none;" id="successAlertEliminada">
             <strong>Tarea eliminada</strong>    
