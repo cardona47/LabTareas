@@ -97,7 +97,6 @@ public class SvTarea extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
         //recibimos los datos de la tarea ingresados por el usuario
         String id = request.getParameter("id");
         String titulo = request.getParameter("titulo");
@@ -107,7 +106,6 @@ public class SvTarea extends HttpServlet {
         String idAntesDe = request.getParameter("idAntesDe"); 
         String idDespuesDe = request.getParameter("idDespuesDe");
         
-        //Convertimos o casteamos la fecha que es tipo String a Date para poder inicializarla en el constructor
         //Convertimos o casteamos la fecha que es tipo String a Date para poder inicializarla en el constructor
         Date fechaV = null;
         try {
@@ -127,7 +125,6 @@ public class SvTarea extends HttpServlet {
             // Guárdala en la sesión
             session.setAttribute("listaTareas", listaTareas);
         }
-        
         //Un filtro para los id de las tareas, para que sea un dato unico en las tareas ingresadas
         if (listaTareas != null) {
             Lista.Nodo nodoActual = listaTareas.inicio;
@@ -168,10 +165,10 @@ public class SvTarea extends HttpServlet {
             listaTareas.agregarTareaAlFinal(nuevaTarea);
         }
 
-        // Guarda la tarea en el archivo
+        //Guarda la tarea nueva en el archivo
         Lista.guardarLista(listaTareas, getServletContext());
 
-        // Redirige a la página Tareas.jsp
+        //Redirige a la página Tareas.jsp
         response.sendRedirect("Tareas.jsp?alert=success");
     }
 
