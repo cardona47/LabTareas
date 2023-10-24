@@ -12,7 +12,7 @@
 <%@include file = "templates/header.jsp" %>
 <% String usuarioVerificado = (String) session.getAttribute("usuarioverificado");%>
 
-<section class="vh-100" style="background: linear-gradient(to top right, #007f00, #000000);">
+<section class="vh-100" style="background: linear-gradient(to top right, #007f00, #000000); min-height: 100vh;">
     <div class="container p-4"> <!-- clase contenedora -->
         <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #1A1A1A;">
             <div class="container-fluid">
@@ -52,14 +52,14 @@
         <%-- formulario para agregar tareas --%>
         <h1 class="text-center mt-4 mb-4" style="color: white;">Tareas</h1>
         <div class="row">
-            <div class="col-md-4 d-flex justify-content-center align-items-center"> <!-- Agrega las clases d-flex, justify-content-center y align-items-center -->
+            <div class="col-md-4 d-flex justify-content-center align-items-center" style="margin-top: -90px;"> <!-- Agrega las clases d-flex, justify-content-center y align-items-center -->
                 <div class="card card-body text-center" style="background-color: #1A1A1A; box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);">
                     <h4 class="text-center" style="color: tomato;">Agrega tareas</h4>
                     <div class="alert alert-danger alert-dismissible fade show" role="alert" style="display: none;" id="errorAlert">
                      Ya hay una tarea agregada en la lista con el mismo Id, por favor inténtalo de nuevo
                     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                     </div>
-                    <form action="SvTarea" method="POST">
+                    <form action="SvTarea" method="POST" style="height: 50%; overflow: hidden;">
     <div class="input-group mb-3">
         <span class="input-group-text" style="width: 100px;">Id</span>
         <input type="text" name="id" class="form-control">
@@ -122,8 +122,8 @@
             <%-- tabla para visualizar las tareas agregadas --%>
             <div class="col-md-8">
                 <div>
-                    <table class="table table-bordered" style="background-color: #1a1a1a; box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);color: white;">
-                        <thead class="thead-dark">
+                    <table class="table table-striped table-dark">
+                        <thead
                             <tr>
                                 <th scope="col">Id</th>
                                 <th scope="col">Titulo</th>
@@ -169,7 +169,9 @@
                                         nodoActual = nodoActual.siguiente;
                                     }
                                 } else {
-                                    out.println("No hay tareas agregadas.");
+                                    out.println("<div style='color: white;'>No hay tareas agregadas.</div>");
+
+
                                 }
                             %>
                         </tbody>
