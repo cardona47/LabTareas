@@ -1,1 +1,4 @@
-1;limpiar;limpiar casa;Wed Oct 18 00:00:00 COT 2023
+1;limpiar;limpiar casa;Tue Oct 24 00:00:00 COT 2023
+2;comprar ;comprar medicamentos;Tue Oct 24 00:00:00 COT 2023
+3;limpiar;limpiar alcoba;Tue Oct 24 00:00:00 COT 2023
+4;comprar ;comprar ropa;Tue Oct 24 00:00:00 COT 2023

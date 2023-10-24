@@ -24,7 +24,7 @@ public class Lista {
     public Nodo inicio = null;
     public Nodo fin = null;
 
-    //Verificamos si la lista esta vacia, y retorna true en caso de que si este vacia
+    //Verificamos si la lista esta vacia, y retorna "true" en caso de que si este vacia
     public boolean verificarContenido() {
         return inicio == null;
     }
@@ -35,7 +35,7 @@ public class Lista {
         public Tarea tarea;
         public Nodo siguiente;
 
-        //Constructor de nodo
+        //Constructor de un nodo
         public Nodo(Tarea tarea) {
             this.tarea = tarea;
             this.siguiente = null;
@@ -51,7 +51,7 @@ public class Lista {
         Nodo nuevoNodo = new Nodo(tarea);
 
         if (inicio == null) {
-            // Si la lista está vacía, el nuevo nodo es tanto el inicio como el fin
+            // Si la lista está vacía, el nuevo nodo es el inicio y el final de la lista
             inicio = nuevoNodo;
             fin = nuevoNodo;
         } else {
@@ -70,11 +70,11 @@ public class Lista {
         Nodo nuevoNodo = new Nodo(tarea);
 
         if (inicio == null) {
-            // Si la lista está vacía, el nuevo nodo es tanto el inicio como el fin
+            //Si la lista está vacía, el nuevo nodo es tanto el inicio como el fin
             inicio = nuevoNodo;
             fin = nuevoNodo;
         } else {
-            // Si no está vacía, el nuevo nodo se agrega al final y se actualiza el fin
+            //Si no está vacía, el nuevo nodo se agrega al final y se actualiza el fin
             fin.siguiente = nuevoNodo;
             fin = nuevoNodo;
         }
@@ -90,8 +90,6 @@ public class Lista {
      */
     public void agregarTareaAntesDe(int id, Tarea tarea) {
         if (inicio == null) {
-            // Puedes manejar esto de alguna manera, por ejemplo, lanzar una excepción o manejar el caso especial.
-            // throw new NoExisteException(id);
             return;
         } else if (id == inicio.tarea.getId()) {
             Nodo nuevoNodo = new Nodo(tarea);
@@ -100,8 +98,6 @@ public class Lista {
         } else {
             Nodo anterior = localizarAnteriorPorId(id);
             if (anterior == null) {
-                // Puedes manejar esto de alguna manera, por ejemplo, lanzar una excepción o manejar el caso especial.
-                // throw new NoExisteException(id);
                 return;
             }
             Nodo nuevoNodo = new Nodo(tarea);
@@ -122,10 +118,9 @@ public class Lista {
         Nodo anterior = localizarPorId(id);
 
         if (anterior == null) {
-            // Puedes manejar esto de alguna manera, por ejemplo, lanzar una excepción o manejar el caso especial.
-            // throw new NoExisteException(id);
             return;
         } else {
+            //El nuevo nodo se agrega a la lista y se actualiza la lista
             Nodo nuevoNodo = new Nodo(tarea);
             nuevoNodo.siguiente = anterior.siguiente;
             anterior.siguiente = nuevoNodo;
@@ -180,10 +175,10 @@ public class Lista {
         }
 
         if (id == inicio.tarea.getId()) {
-            // La tarea es la primera de la lista
+            //La tarea es la primera de la lista
             inicio = inicio.siguiente;
         } else {
-            // La tarea es un elemento intermedio de la lista
+            //La tarea es un elemento intermedio de la lista
             Nodo anterior = localizarAnteriorPorId(id);
             if (anterior == null) {
                 System.out.println("No se encontró una tarea con id: " + id + " para eliminar.");
@@ -206,7 +201,7 @@ public class Lista {
         Nodo tareaExistente = localizarPorId(id);
 
         if (tareaExistente != null) {
-            // Actualiza los atributos de la tarea
+            //Edita la tarea con los nuevos parametros ingresados por el usuario
             tareaExistente.tarea.setTitulo(nuevoTitulo);
             tareaExistente.tarea.setDescripcion(nuevaDescripcion);
 
@@ -223,7 +218,7 @@ public class Lista {
 
     /**
      * Metodo para registrar o guardar en el archivo de texto las tareas
-     * agregadas
+     * agregadas agregadas
      *
      * @param listaActualizada
      * @param context

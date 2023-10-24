@@ -54,68 +54,66 @@
         <div class="row">
             <div class="col-md-4 d-flex justify-content-center align-items-center" style="margin-top: -90px;"> <!-- Agrega las clases d-flex, justify-content-center y align-items-center -->
                 <div class="card card-body text-center" style="background-color: #1A1A1A; box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);">
-                    <h4 class="text-center" style="color: tomato;">Agrega tareas</h4>
+                    <h4 class="text-center" style="color: #ff6219;">Agrega tareas</h4>
                     <div class="alert alert-danger alert-dismissible fade show" role="alert" style="display: none;" id="errorAlert">
-                     Ya hay una tarea agregada en la lista con el mismo Id, por favor inténtalo de nuevo
-                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        Ya hay una tarea agregada en la lista con el mismo Id, por favor inténtalo de nuevo
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                     </div>
                     <form action="SvTarea" method="POST" style="height: 50%; overflow: hidden;">
-    <div class="input-group mb-3">
-        <span class="input-group-text" style="width: 100px;">Id</span>
-        <input type="text" name="id" class="form-control">
-    </div>
+                        <div class="input-group mb-3">
+                            <span class="input-group-text" style="width: 100px;">Id</span>
+                            <input type="text" name="id" class="form-control">
+                        </div>
 
-    <div class="input-group mb-3">
-        <span class="input-group-text" style="width: 100px;">Titulo</span>
-        <input type="text" name="titulo" class="form-control">
-    </div>
-    <div class="input-group mb-3">
-        <span class="input-group-text" style="width: 100px;">Descripcion</span>
-        <input type="text" name="descripcion" class="form-control">
-    </div>
+                        <div class="input-group mb-3">
+                            <span class="input-group-text" style="width: 100px;">Titulo</span>
+                            <input type="text" name="titulo" class="form-control">
+                        </div>
+                        <div class="input-group mb-3">
+                            <span class="input-group-text" style="width: 100px;">Descripcion</span>
+                            <input type="text" name="descripcion" class="form-control">
+                        </div>
 
-    <div class="input-group mb-3">
-        <span class="input-group-text" style="width: 100px;">Fecha de vencimiento</span>
-        <input type="date" name="fechaV" class="form-control">
-    </div>
+                        <div class="input-group mb-3">
+                            <span class="input-group-text" style="width: 100px;">Fecha de vencimiento</span>
+                            <input type="date" name="fechaV" class="form-control">
+                        </div>
                         <!-- Radio buttons para seleccionar la posicion de la nueva tarea en la lista -->
                         <div class="tareas-container"style="display: none;">
-    <h6 class="text-center" style="color: white;">Seleccione la posición en la que quiere agregar la nueva tarea en la lista</h6>
-    <div class="mb-3 form-check">
-        <input class="form-check-input" type="radio" name="posicion" id="primeroRadio" value="primero">
-        <label class="form-check-label" for="primeroRadio" style="color: white;">
-            Primero en la lista
-        </label>
-    </div>
+                            <h6 class="text-center" style="color: white;">Seleccione la posición en la que quiere agregar la nueva tarea en la lista:</h6>
+                            <div class="mb-3 form-check">
+                                <input class="form-check-input" type="radio" name="posicion" id="primeroRadio" value="primero">
+                                <label class="form-check-label" for="primeroRadio" style="color: white;">
+                                    Primero en la lista
+                                </label>
+                            </div>
 
-    <div class="mb-3 form-check">
-        <input class="form-check-input" type="radio" name="posicion" id="ultimoRadio" value="ultimo">
-        <label class="form-check-label" for="ultimoRadio" style="color: white;">
-            Último en la lista
-        </label>
-    </div>
+                            <div class="mb-3 form-check">
+                                <input class="form-check-input" type="radio" name="posicion" id="ultimoRadio" value="ultimo">
+                                <label class="form-check-label" for="ultimoRadio" style="color: white;">
+                                    Último en la lista
+                                </label>
+                            </div>
 
-    <div class="mb-3 form-check">
-        <input class="form-check-input" type="radio" name="posicion" id="antesDeRadio" value="antesDe">
-        <label class="form-check-label" for="antesDeRadio" style="color: white;">
-            Antes de Tarea con ID:
-        </label>
-        <input type="text" name="idAntesDe" id="idAntesDe" placeholder="ID" class="form-control">
-    </div>
+                            <div class="mb-3 form-check">
+                                <input class="form-check-input" type="radio" name="posicion" id="antesDeRadio" value="antesDe">
+                                <label class="form-check-label" for="antesDeRadio" style="color: white;">
+                                    Antes de Tarea con ID:
+                                </label>
+                                <input type="text" name="idAntesDe" id="idAntesDe" placeholder="ID" class="form-control">
+                            </div>
 
-    <div class="mb-3 form-check">
-        <input class="form-check-input" type="radio" name="posicion" id="despuesDeRadio" value="despuesDe">
-        <label class="form-check-label" for="despuesDeRadio" style="color: white;">
-            Después de Tarea con ID:
-        </label>
-        <input type="text" name="idDespuesDe" id="idDespuesDe" placeholder="ID" class="form-control">
-    </div>
-</div>
+                            <div class="mb-3 form-check">
+                                <input class="form-check-input" type="radio" name="posicion" id="despuesDeRadio" value="despuesDe">
+                                <label class="form-check-label" for="despuesDeRadio" style="color: white;">
+                                    Después de Tarea con ID:
+                                </label>
+                                <input type="text" name="idDespuesDe" id="idDespuesDe" placeholder="ID" class="form-control">
+                            </div>
+                        </div>
 
-    <button type="submit" class="btn btn-primary mt-3" style="background-color: #ff6219; border-color: #ff6219;">Agregar tarea</button>
-</form>
-
-
+                        <button type="submit" class="btn btn-primary mt-3" style="background-color: #ff6219; border-color: #ff6219;">Agregar tarea</button>
+                    </form>
                 </div>
             </div>
 
@@ -125,12 +123,12 @@
                     <table class="table table-striped table-dark">
                         <thead
                             <tr>
-                                <th scope="col">Id</th>
-                                <th scope="col">Titulo</th>
-                                <th scope="col">Descripción</th>
-                                <th scope="col">Fecha de vencimiento</th>
-                                <th scope="col">Acciones</th>
-                            </tr>
+                        <th scope="col">Id</th>
+                        <th scope="col">Titulo</th>
+                        <th scope="col"">Descripción</th>
+                        <th scope="col">Fecha de vencimiento</th>
+                        <th scope="col">Acciones</th>
+                        </tr>
                         </thead>
                         <tbody>
                             <%
@@ -170,7 +168,6 @@
                                     }
                                 } else {
                                     out.println("<div style='color: white;'>No hay tareas agregadas.</div>");
-
 
                                 }
                             %>

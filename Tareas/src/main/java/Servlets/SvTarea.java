@@ -24,11 +24,11 @@ import javax.servlet.http.HttpSession;
  */
 @WebServlet(name = "SvTarea", urlPatterns = {"/SvTarea"})
 public class SvTarea extends HttpServlet {
-    
+
     private Lista listaTareas;
-     
-  @Override
-  public void init() throws ServletException {
+
+    @Override
+    public void init() throws ServletException {
         // Inicializa la lista de tareas al cargar el servlet
         listaTareas = Lista.leerLista(getServletContext());
     }
@@ -62,8 +62,8 @@ public class SvTarea extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-          String tipo = request.getParameter("tipo");
-           if (tipo != null && tipo.equals("delete")) {
+        String tipo = request.getParameter("tipo");
+        if (tipo != null && tipo.equals("delete")) {
             String idEliminar = request.getParameter("id");
             if (idEliminar != null && !idEliminar.isEmpty()) {
                 HttpSession session = request.getSession();
@@ -103,9 +103,9 @@ public class SvTarea extends HttpServlet {
         String descripcion = request.getParameter("descripcion");
         String fecha = request.getParameter("fechaV");
         String posicion = request.getParameter("posicion");
-        String idAntesDe = request.getParameter("idAntesDe"); 
+        String idAntesDe = request.getParameter("idAntesDe");
         String idDespuesDe = request.getParameter("idDespuesDe");
-        
+
         //Convertimos o casteamos la fecha que es tipo String a Date para poder inicializarla en el constructor
         Date fechaV = null;
         try {
@@ -138,7 +138,7 @@ public class SvTarea extends HttpServlet {
             }
         }
         //funciones de los radio buttons
-        if("primero".equals(posicion)){
+        if ("primero".equals(posicion)) {
             //Agrega la tarea al inicio de la lista
             listaTareas.agregarTareaAlInicio(nuevaTarea);
         } else if ("ultimo".equals(posicion)) {

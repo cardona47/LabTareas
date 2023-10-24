@@ -9,6 +9,7 @@ package com.umariana.mundo;
  * @author Samuel Bolaños
  */
 public class Nodo {
+
     private Nodo siguiente;
     private Tarea tarea;
 
@@ -32,6 +33,5 @@ public class Nodo {
     public void setTarea(Tarea tarea) {
         this.tarea = tarea;
     }
-    
-    
+
 }
