@@ -62,21 +62,21 @@
                     <form action="SvTarea" method="POST" style="height: 50%; overflow: hidden;">
                         <div class="input-group mb-3">
                             <span class="input-group-text" style="width: 100px;">Id</span>
-                            <input type="text" name="id" class="form-control">
+                            <input type="text" name="id" class="form-control"required>
                         </div>
 
                         <div class="input-group mb-3">
                             <span class="input-group-text" style="width: 100px;">Titulo</span>
-                            <input type="text" name="titulo" class="form-control">
+                            <input type="text" name="titulo" class="form-control"required>
                         </div>
                         <div class="input-group mb-3">
                             <span class="input-group-text" style="width: 100px;">Descripcion</span>
-                            <input type="text" name="descripcion" class="form-control">
+                            <input type="text" name="descripcion" class="form-control"required>
                         </div>
 
                         <div class="input-group mb-3">
                             <span class="input-group-text" style="width: 100px;">Fecha de vencimiento</span>
-                            <input type="date" name="fechaV" class="form-control">
+                            <input type="date" name="fechaV" class="form-control"required>
                         </div>
                         <!-- Radio buttons para seleccionar la posicion de la nueva tarea en la lista -->
                         <div class="tareas-container"style="display: none;">
