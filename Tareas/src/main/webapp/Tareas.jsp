@@ -131,7 +131,8 @@
                         </tr>
                         </thead>
                         <tbody>
-                            <%
+                            <%  
+                                ServletContext context = request.getServletContext();
                                 Lista listaTareas = (Lista) session.getAttribute("listaTareas");
 
                                 if (listaTareas != null) {
